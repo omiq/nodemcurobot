@@ -16,6 +16,15 @@ def save_file(wifi_name, wifi_pass):
     f.close()
 
 
+# serve static web page
+def serve_file(client_stream, filename):
+    client_stream.write(CONTENT)
+    with open(filename, 'r') as html:
+        client_stream.write(html.read())
+
+    client_stream.close()
+
+
 # process the web requests
 def process_request(client_stream, req):
 
