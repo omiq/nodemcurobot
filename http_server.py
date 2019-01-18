@@ -7,6 +7,9 @@ HTTP/1.0 200 OK
 
 """
 
+# global client_stream object
+client_stream = None
+
 
 # save the wifi details to a file
 def save_file(wifi_name, wifi_pass):
@@ -17,17 +20,17 @@ def save_file(wifi_name, wifi_pass):
 
 
 # serve static web page
-def serve_file(client_stream, filename):
+def serve_file(filename):
+    global client_stream
     client_stream.write(CONTENT)
     with open(filename, 'r') as html:
         client_stream.write(html.read())
-
     client_stream.close()
 
 
 # process the web requests
-def process_request(client_stream, req):
-
+def process_request(req):
+    global client_stream
     # defaults
     method = ""
     url = ""
@@ -58,16 +61,22 @@ def process_request(client_stream, req):
             save_file(wifi_name, wifi_pass)
 
             # report back
-            serve_file(client_stream, "success.txt")
+            serve_file("success.txt")
+            return
 
-    serve_file(client_stream, "wifi.txt")
+    # credentials set UI
+    serve_file("wifi.txt")
 
 
 # main loop
 def main():
+    global client_stream
+
     s = socket.socket()
 
     # Binding to all interfaces - server will be accessible to other hosts!
+    ap_if = network.WLAN(network.AP_IF)
+    sta_if = network.WLAN(network.STA_IF)
     ai = socket.getaddrinfo("0.0.0.0", 80)
     print("Bind address info:", ai)
     addr = ai[0][-1]
@@ -75,7 +84,10 @@ def main():
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(addr)
     s.listen(5)
-    print("Listening")
+
+    print("Listening, connect your browser to")
+    print(ap_if.ifconfig())
+    print(sta_if.ifconfig())
 
     while True:
         res = s.accept()
@@ -98,9 +110,10 @@ def main():
             print(h)
 
         # deal with the request
-        process_request(client_stream, req)
+        process_request(req)
 
         print()
 
 
+# run
 main()
