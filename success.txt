@@ -1,0 +1,35 @@
+
+<html>
+<head>
+    <title>Set WIFI</title>
+    <link rel="icon" href="data:,">
+    <style type="text/css" id="style">
+
+    body {
+    font-family: courier;
+    }
+    .box { border: 5px solid black; height: 200px; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center;}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="box" id="box">
+
+     <h1>WIFI SETUP</h1>
+
+        <h3>Enter the name and password for your wifi hotspot then hit submit:</h3>
+        <form action="/" method="GET" enctype="text/plain">
+
+            <input type="text" name="name">
+            <input type="text" name="pass">
+            <input type="submit" name="submit">
+
+        </form>
+
+
+    </div>
+</body>
+</html>
+

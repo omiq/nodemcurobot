@@ -48,13 +48,10 @@ def process_request(client_stream, req):
             # write the deets away
             save_file(wifi_name, wifi_pass)
 
-            # quit
-            sys.exit()
+            # report back
+            serve_file(client_stream, "success.txt")
 
-
-    client_stream.write(CONTENT)
-    with open('wifi.txt', 'r') as html:
-        client_stream.write(html.read())
+    serve_file(client_stream, "wifi.txt")
 
 
 # main loop
@@ -94,7 +91,6 @@ def main():
         # deal with the request
         process_request(client_stream, req)
 
-        client_stream.close()
         print()
 
 
