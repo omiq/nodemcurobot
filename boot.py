@@ -18,6 +18,14 @@ def do_connect(wifi_name, wifi_password):
 
 # try to use stored credentials
 try:
+
+    # Set up the Access Point
+    ap = network.WLAN(network.AP_IF)
+    ap.active(True)
+    ap.config(essid='ESP8266')
+    ap.config(authmode=3, password='0123456789')
+
+
     f = open("wifi.ini", "r")
 
     # get the wifi name and password from stored file
