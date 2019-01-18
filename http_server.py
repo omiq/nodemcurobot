@@ -1,3 +1,4 @@
+import sys
 import usocket as socket
 
 
@@ -5,6 +6,14 @@ CONTENT = b"""\
 HTTP/1.0 200 OK
 
 """
+
+
+# save the wifi details to a file
+def save_file(wifi_name, wifi_pass):
+    f = open('wifi.ini', 'w')
+    f.write(wifi_name + "\n")
+    f.write(wifi_pass)
+    f.close()
 
 
 # process the web requests
@@ -40,7 +49,7 @@ def process_request(client_stream, req):
             save_file(wifi_name, wifi_pass)
 
             # quit
-            machine.reset()
+            sys.exit()
 
 
     client_stream.write(CONTENT)
