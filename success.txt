@@ -17,17 +17,9 @@
 
     <div class="box" id="box">
 
-     <h1>WIFI SETUP</h1>
+     <h1>Success!</h1>
 
-        <h3>Enter the name and password for your wifi hotspot then hit submit:</h3>
-        <form action="/" method="GET" enctype="text/plain">
-
-            <input type="text" name="name">
-            <input type="text" name="pass">
-            <input type="submit" name="submit">
-
-        </form>
-
+        Now reset your board
 
     </div>
 </body>
