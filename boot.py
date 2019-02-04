@@ -13,13 +13,17 @@ def do_connect(wifi_name, wifi_password):
         while not sta_if.isconnected():
             print(".", end="")
             time.sleep(0.1)
-    sta_if.config(dhcp_hostname="ESP8266")
+
     print('network config:', sta_if.ifconfig())
 
 
+# We only want the Access Point if we need to connect
+ap = network.WLAN(network.AP_IF)
+ap.active(False)
+
 # try to use stored credentials
 try:
-
+    # credentials file:
     f = open("wifi.ini", "r")
 
     # get the wifi name and password from stored file
@@ -35,13 +39,16 @@ try:
 except:
     print("File does not exist")
     print("Setting up Access Point")
+
     # Set up the Access Point
     ap = network.WLAN(network.AP_IF)
     ap.active(True)
     ap.config(essid='ESP8266')
     ap.config(authmode=3, password='0123456789')
 
+    # Start the web server
     exec(open("http_server.py").read())
+
 
 
 
