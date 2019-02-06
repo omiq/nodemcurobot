@@ -2,6 +2,8 @@ from ws_connection import ClientClosedError
 
 from ws_server import WebSocketServer, WebSocketClient
 
+import machine
+
 
 class TestClient(WebSocketClient):
 
@@ -9,6 +11,7 @@ class TestClient(WebSocketClient):
 
         super().__init__(conn)
         self.counter = 0
+        self.led = machine.Pin(2, machine.Pin.OUT)
 
     def process(self):
 
@@ -27,8 +30,9 @@ class TestClient(WebSocketClient):
 
             if cmd != "":
                 self.counter += 1
-
+                self.led.value(1)
                 self.connection.write(cmd + str(self.counter))
+                self.led.value(0)
 
                 print("Responded")
 
