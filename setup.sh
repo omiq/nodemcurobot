@@ -26,6 +26,7 @@ ampy -d 0.5 -p /dev/tty.SLAB_USBtoUART put ws_connection.py
 echo .
 ampy -d 0.5 -p /dev/tty.SLAB_USBtoUART put ws_server.py
 echo .
+ampy -d 0.5 -p /dev/tty.SLAB_USBtoUART put motest.py
 
 
 
