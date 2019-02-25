@@ -51,12 +51,3 @@ def right():
     AIN2.duty(0)
 
 
-while 1:
-    forward()
-    time.sleep(1)
-    left()
-    time.sleep(1)
-    right()
-    time.sleep(1)
-    stop_all()
-    time.sleep(1)
