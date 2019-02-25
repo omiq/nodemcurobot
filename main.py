@@ -34,6 +34,8 @@ try:
     # connect using the acquired deets
     do_connect(wifi_name, wifi_password)
 
+    # Run the robot UI
+    exec(open("robot.py").read())
 
 # does the wifi settings file not exist?
 except:
