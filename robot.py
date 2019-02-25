@@ -4,6 +4,8 @@ from ws_server import WebSocketServer, WebSocketClient
 
 import machine
 
+import motorcontrol
+
 
 class RobotClient(WebSocketClient):
 
@@ -29,6 +31,9 @@ class RobotClient(WebSocketClient):
             cmd = items[0]
 
             if cmd != "":
+
+
+
                 self.counter += 1
                 self.led.value(1)
                 self.connection.write(cmd + str(self.counter))
