@@ -25,7 +25,7 @@ def stop_all():
 
 
 def backward():
-    print("Backward")
+    print("V")
     BIN1.duty(speed)
     BIN2.duty(rev)
     AIN1.duty(speed)
@@ -33,7 +33,7 @@ def backward():
 
 
 def forward():
-    print("Forward")
+    print("^")
     BIN1.duty(speed)
     BIN2.duty(fwd)
     AIN1.duty(speed)
@@ -41,7 +41,7 @@ def forward():
 
 
 def hardright():
-    print("HardLeft")
+    print(">>")
     BIN1.duty(speed)
     BIN2.duty(fwd)
     AIN1.duty(speed)
@@ -49,7 +49,7 @@ def hardright():
 
 
 def right():
-    print("Left")
+    print(">")
     BIN1.duty(speed)
     BIN2.duty(fwd)
     AIN1.duty(0)
@@ -57,7 +57,7 @@ def right():
 
 
 def left():
-    print("Right")
+    print("<")
     BIN1.duty(0)
     BIN2.duty(0)
     AIN1.duty(speed)
@@ -65,7 +65,7 @@ def left():
 
 
 def hardleft():
-    print("HardRight")
+    print("<<")
     BIN1.duty(speed)
     BIN2.duty(rev)
     AIN1.duty(speed)
