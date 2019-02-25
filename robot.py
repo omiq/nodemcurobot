@@ -5,7 +5,7 @@ from ws_server import WebSocketServer, WebSocketClient
 import machine
 
 
-class TestClient(WebSocketClient):
+class RobotClient(WebSocketClient):
 
     def __init__(self, conn):
 
@@ -34,35 +34,40 @@ class TestClient(WebSocketClient):
                 self.connection.write(cmd + str(self.counter))
                 self.led.value(0)
 
-                print("Responded")
+                print(cmd)
 
         except ClientClosedError:
 
             self.connection.close()
 
 
-class TestServer(WebSocketServer):
+class RobotServer(WebSocketServer):
 
     def __init__(self):
         super().__init__("sockets.html", 2)
 
     def _make_client(self, conn):
-        return TestClient(conn)
+        return RobotClient(conn)
 
 
-server = TestServer()
+# main function
+if __name__ == '__main__':
 
-server.start()
+    # start the server
+    server = RobotServer()
+    server.start()
 
-try:
+    # keep running until keyboard interrupt
+    try:
 
-    while True:
-        server.process_all()
+        while True:
+            server.process_all()
 
-except KeyboardInterrupt:
+    except KeyboardInterrupt:
 
-    pass
+        pass
 
-server.stop()
+    # stop the server
+    server.stop()
 
 
