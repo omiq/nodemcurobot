@@ -1,20 +1,20 @@
 from machine import Pin, PWM
 import time
 
-""" nodemcu pins from the motor shield """
+# nodemcu / motor shield pins
 pin1 = Pin(5, Pin.OUT)  # D1 Direction
 pin2 = Pin(4, Pin.OUT)  # D2 Direction
 pin3 = Pin(0, Pin.OUT)  # D3 Speed
 pin4 = Pin(2, Pin.OUT)  # D4 Speed
 
-""" named after the L9110 h-bridge pins """
+# h-bridge pins
 BIN1 = PWM(pin1, freq=750)
 BIN2 = PWM(pin3, freq=750)
 AIN1 = PWM(pin2, freq=750)
 AIN2 = PWM(pin4, freq=750)
 
-""" TODO: variable speed """
-speed = 1000
+# speed/direction values
+speed = 1023
 fwd = 0
 rev = 1023
 
