@@ -50,7 +50,7 @@ class RobotClient(WebSocketClient):
 class RobotServer(WebSocketServer):
 
     def __init__(self):
-        super().__init__("sockets.html", 2)
+        super().__init__("robotcontrols.html", 2)
 
     def _make_client(self, conn):
         return RobotClient(conn)
