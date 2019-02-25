@@ -35,7 +35,7 @@ class WebSocketServer:
         for i in (network.AP_IF, network.STA_IF):
             iface = network.WLAN(i)
             if iface.active():
-                print("WebSocket started on ws://%s:%d" % (iface.ifconfig()[0], port))
+                print("Server started on http://%s" % (iface.ifconfig()[0]))
 
     def _accept_conn(self, listen_sock):
         cl, remote_addr = listen_sock.accept()
@@ -83,13 +83,13 @@ class WebSocketServer:
         self._listen_s = None
         for client in self._clients:
             client.connection.close()
-        print("Stopped WebSocket server.")
+        print("Stopped server.")
 
     def start(self, port=80):
         if self._listen_s:
             self.stop()
         self._setup_conn(port, self._accept_conn)
-        print("Started WebSocket server.")
+        print("Started server.")
 
     def process_all(self):
         for client in self._clients:
