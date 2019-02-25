@@ -40,7 +40,7 @@ def forward():
     AIN2.duty(fwd)
 
 
-def hardleft():
+def hardright():
     print("HardLeft")
     BIN1.duty(speed)
     BIN2.duty(fwd)
@@ -48,7 +48,7 @@ def hardleft():
     AIN2.duty(rev)
 
 
-def left():
+def right():
     print("Left")
     BIN1.duty(speed)
     BIN2.duty(fwd)
@@ -56,7 +56,7 @@ def left():
     AIN2.duty(0)
 
 
-def right():
+def left():
     print("Right")
     BIN1.duty(0)
     BIN2.duty(0)
@@ -64,7 +64,7 @@ def right():
     AIN2.duty(fwd)
 
 
-def hardright():
+def hardleft():
     print("HardRight")
     BIN1.duty(speed)
     BIN2.duty(rev)
