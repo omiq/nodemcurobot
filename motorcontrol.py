@@ -51,10 +51,3 @@ def right():
     AIN2.duty(0)
 
 
-command = {
-    "f" : forward,
-    "b" : backward,
-    "l" : left,
-    "r" : right,
-    "x" : stop_all
-}
