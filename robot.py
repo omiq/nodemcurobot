@@ -34,15 +34,11 @@ class RobotClient(WebSocketClient):
 
                 # run the robot command
                 print(cmd)
-                command = {
-                    "f": motorcontrol.forward,
-                    "b": motorcontrol.backward,
-                    "l": motorcontrol.left,
-                    "r": motorcontrol.right,
-                    "x": motorcontrol.stop_all
-                }
-
-                command[cmd]()
+                if cmd == "f": motorcontrol.forward()
+                if cmd == "b": motorcontrol.backward()
+                if cmd == "l": motorcontrol.left()
+                if cmd == "r": motorcontrol.right()
+                if cmd == "x": motorcontrol.stop_all()
 
                 # respond
                 self.counter += 1
