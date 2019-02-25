@@ -32,14 +32,15 @@ class RobotClient(WebSocketClient):
 
             if cmd != "":
 
+                # run the robot command
+                motorcontrol.command[cmd]()
+                print(cmd)
 
-
+                # respond
                 self.counter += 1
                 self.led.value(1)
                 self.connection.write(cmd + str(self.counter))
                 self.led.value(0)
-
-                print(cmd)
 
         except ClientClosedError:
 
