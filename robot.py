@@ -38,6 +38,8 @@ class RobotClient(WebSocketClient):
                 if cmd == "b": motorcontrol.backward()
                 if cmd == "l": motorcontrol.left()
                 if cmd == "r": motorcontrol.right()
+                if cmd == "<<": motorcontrol.hardleft()
+                if cmd == ">>": motorcontrol.hardright()
                 if cmd == "x": motorcontrol.stop_all()
 
                 # respond
