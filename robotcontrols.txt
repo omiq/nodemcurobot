@@ -46,7 +46,7 @@
 
 </script>
 
-<div style="margin-left: auto; margin-right: auto; margin-top: auto; width: 350px; text-align: center;">
+<div style="margin-left: auto; margin-right: auto; margin-top: auto; width: 450px; text-align: center;">
 
     Received: <br/>
     <div id="response">
